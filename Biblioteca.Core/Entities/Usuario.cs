@@ -8,6 +8,7 @@ namespace Biblioteca.Core.Entities
 {
     public class Usuario : BaseEntity
     {
+
         public Usuario(string nome, string email)
         {
             Nome = nome;

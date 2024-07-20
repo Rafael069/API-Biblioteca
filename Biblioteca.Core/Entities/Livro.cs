@@ -17,8 +17,7 @@ namespace Biblioteca.Core.Entities
 
             Emprestimos = new List<Emprestimo>();
         }
-
-            
+        
             public string Titulo { get; private set; }
             public string Autor { get; private set; }
             public string ISBN { get; private set; }

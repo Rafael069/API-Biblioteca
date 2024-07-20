@@ -13,17 +13,18 @@ namespace Biblioteca.Core.Entities
             UsuarioId = usuarioId;
             LivroId = livroId;
             DataEmprestimo = DateTime.Now;
-            DataDevolucao = DateTime.Now;
+            DataDevolucao = dataDevolucao;
+            
         }
 
 
             public int UsuarioId { get; private set; }
             public int LivroId { get; private set; }
             public DateTime DataEmprestimo { get; private set; }
-            public DateTime? DataDevolucao { get; private set; }
+            public DateTime DataDevolucao { get; private set; }
 
-            public Usuario Usuario { get; private set; }
-            public Livro Livro { get; private set; }
+            public Usuario? Usuario { get; private set; }
+            public Livro? Livro { get; private set; }
         
 
     }

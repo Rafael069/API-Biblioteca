@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Core.Entities
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         protected BaseEntity() { }
 
