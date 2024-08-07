@@ -31,3 +31,9 @@ C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.pdb
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.genruntimeconfig.cache
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\ref\Biblioteca.API.dll
+C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\bin\Debug\net6.0\Biblioteca.Application.dll
+C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\bin\Debug\net6.0\Biblioteca.Core.dll
+C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\bin\Debug\net6.0\Biblioteca.Infrastructure.dll
+C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\bin\Debug\net6.0\Biblioteca.Application.pdb
+C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\bin\Debug\net6.0\Biblioteca.Core.pdb
+C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\bin\Debug\net6.0\Biblioteca.Infrastructure.pdb

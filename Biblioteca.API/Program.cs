@@ -1,3 +1,7 @@
+using Biblioteca.Application.Services;
+using Biblioteca.Application.Services.Implementations;
+using Biblioteca.Infrastructure.Persistence;
+
 namespace Biblioteca.API
 {
     public class Program
@@ -8,6 +12,9 @@ namespace Biblioteca.API
 
             // Add services to the container.
 
+            
+            builder.Services.AddSingleton<BibliotecaDbContext>();
+            builder.Services.AddScoped<ILivroService, LivroService>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

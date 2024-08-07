@@ -13,9 +13,9 @@ namespace Biblioteca.Infrastructure.Persistence
         {
             Livros = new List<Livro>
             {
-                new Livro("Primeiro livro 1","João1", "9780312150605",2022),
-                new Livro("Primeiro livro 2", "João2", "9780312150606", 2023),
-                new Livro("Primeiro livro 3", "João3", "9780312150607", 2024)
+                new Livro(1,"Primeiro livro 1","João1", "9780312150605",2022),
+                new Livro(2,"Primeiro livro 2", "João2", "9780312150606", 2023),
+                new Livro(3,"Primeiro livro 3", "João3", "9780312150607", 2024)
             };
 
 

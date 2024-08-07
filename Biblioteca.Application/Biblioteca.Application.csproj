@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="InputModels\" />
-    <Folder Include="Services\Implementations\" />
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\Biblioteca.Core\Biblioteca.Core.csproj" />
+    <ProjectReference Include="..\Biblioteca.Infrastructure\Biblioteca.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
