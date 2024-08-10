@@ -4,18 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteca.Application.InputModels
+namespace Biblioteca.Application.ViewModels
 {
-    public class UsuarioViewModel
+    public class UsuarioDetailsViewModel
     {
-        public UsuarioViewModel(string nome, string email)
+        public UsuarioDetailsViewModel(int id, string nome, string email)
         {
+            Id = id;
             Nome = nome;
             Email = email;
         }
 
+        //Id = id;
+        //    Nome = nome;
+        //    Email = email;
+
+        public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Email { get; private set; }
-
     }
 }

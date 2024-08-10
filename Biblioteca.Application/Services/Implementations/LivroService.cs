@@ -56,7 +56,13 @@ namespace Biblioteca.Application.Services.Implementations
         public LivroDetailsViewModel GetById(int id)
         {
 
-            var livros = _dbContext.Livros.SingleOrDefault(l => l.Id == id);
+            //var livros = _dbContext.Livros.SingleOrDefault(l => l.Id == id);
+
+
+            // Filtra pelo ID e pelo status Ativo
+            var livros = _dbContext.Livros
+                                  .Where(l => l.Id == id && l.Status == LivroStatusEnum.Ativo)
+                                  .SingleOrDefault();
 
             var livroDetailsViewModel = new LivroDetailsViewModel(
                 livros.Id,

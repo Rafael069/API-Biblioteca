@@ -21,9 +21,9 @@ namespace Biblioteca.Infrastructure.Persistence
 
             Usuarios = new List<Usuario>
             {
-                new Usuario("Rafael","rafael@gmail.com"),
-                new Usuario("Ana","ana@gmail.com"),
-                new Usuario("Pedro","pedro@gmail.com")
+                new Usuario(1,"Rafael","rafael@gmail.com"),
+                new Usuario(2,"Ana","ana@gmail.com"),
+                new Usuario(3,"Pedro","pedro@gmail.com")
             };
 
             Emprestimos = new List<Emprestimo>

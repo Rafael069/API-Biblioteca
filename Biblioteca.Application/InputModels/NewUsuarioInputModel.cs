@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Application.InputModels
 {
-    public class UpdateLivroInputModel
+    public class NewUsuarioInputModel
     {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+
+        public string Email { get; set; }
+        
     }
 }
