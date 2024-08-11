@@ -1,5 +1,6 @@
 using Biblioteca.Application.Services;
 using Biblioteca.Application.Services.Implementations;
+using Biblioteca.Application.Services.Interfaces;
 using Biblioteca.Infrastructure.Persistence;
 
 namespace Biblioteca.API
@@ -14,6 +15,7 @@ namespace Biblioteca.API
 
             
             builder.Services.AddSingleton<BibliotecaDbContext>();
+            builder.Services.AddScoped<IEmprestimoService,EmprestimoService>();
             builder.Services.AddScoped<ILivroService, LivroService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
             builder.Services.AddControllers();

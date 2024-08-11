@@ -28,9 +28,9 @@ namespace Biblioteca.Infrastructure.Persistence
 
             Emprestimos = new List<Emprestimo>
             {
-                new Emprestimo(1,1,DateTime.Now,new DateTime(2024,07,22)),
-                new Emprestimo(2,2,DateTime.Now,new DateTime(2024,08,22)),
-                new Emprestimo(3,3,DateTime.Now,new DateTime(2024,09,22))
+                new Emprestimo(1,1,1,DateTime.Now,new DateTime(2024,07,22)),
+                new Emprestimo(2,2,2,DateTime.Now,new DateTime(2024,08,22)),
+                new Emprestimo(3,3,3,DateTime.Now,new DateTime(2024,09,22))
             };
         }
 

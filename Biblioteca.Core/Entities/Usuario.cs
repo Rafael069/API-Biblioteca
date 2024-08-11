@@ -27,7 +27,6 @@ namespace Biblioteca.Core.Entities
         public List<Emprestimo> Emprestimos { get; set; }
 
 
-
         public void Cancel()
         {
             if (Status == UsuarioStatusEnum.Ativo)
