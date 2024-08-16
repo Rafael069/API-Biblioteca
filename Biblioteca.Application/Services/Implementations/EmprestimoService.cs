@@ -94,6 +94,34 @@ namespace Biblioteca.Application.Services.Implementations
             return novoEmprestimo.Id;
         }
 
+        //public void Update(UpdateEmprestimoInputModel inputModel)
+        //{
+        //    var emprestimo = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == inputModel.Id);
+        //    if (emprestimo != null)
+        //    {
+        //        emprestimo.UpdateDataDevolucao(inputModel.DataDevolucao);
+        //        //_dbContext.SaveChanges();
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("Empréstimo não encontrado.");
+        //    }
+        //}
+
+        //public string GetStatusDevolucao(int emprestimoId)
+        public string GetStatusDevolucao(UpdateEmprestimoInputModel inputModel)
+        {
+            var emprestimo = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == inputModel.Id);
+            if (emprestimo != null)
+            {
+                //return emprestimo.GetStatusDevolucao();
+                return emprestimo.GetStatusDevolucao(inputModel.DataDevolucao);
+            }
+            else
+            {
+                throw new Exception("Empréstimo não encontrado.");
+            }
+        }
 
     }
 }

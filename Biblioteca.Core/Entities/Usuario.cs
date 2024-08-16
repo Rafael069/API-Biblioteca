@@ -35,5 +35,13 @@ namespace Biblioteca.Core.Entities
             }
         }
 
+
+        public void Update(string nome, string email)
+        {
+            Nome = nome;
+            Email = email;
+
+        }
+
     }
 }

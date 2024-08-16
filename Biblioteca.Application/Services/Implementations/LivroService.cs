@@ -75,9 +75,18 @@ namespace Biblioteca.Application.Services.Implementations
             return livroDetailsViewModel;
         }
 
-        //public void Update(UpdateLivroInputModel inputModel)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public void Update(int id, UpdateLivroInputModel inputModel)
+        {
+            var livro = _dbContext.Livros.SingleOrDefault(l => l.Id == id);
+
+            if (livro == null)
+            {
+                throw new Exception("Livro não encontrado.");
+            }
+
+            livro.Update(inputModel.Titulo, inputModel.Autor,inputModel.ISBN,inputModel.AnoPublicacao);
+
+        }
+
     }
 }

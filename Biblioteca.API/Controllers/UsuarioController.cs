@@ -75,5 +75,27 @@ namespace Biblioteca.API.Controllers
             return NoContent();
 
         }
+
+        [HttpPut("{id}")]
+        public IActionResult PutUser([FromBody] UpdateUsuarioInputModel inputModel)
+        {
+            if (inputModel.Nome == null || inputModel.Email == null)
+            {
+                return BadRequest("Dados inválidos.");
+            }
+
+            try
+            {
+                _usuarioService.Update(inputModel);
+            }
+            catch (Exception ex)
+            {
+                // Tratamento de exceções mais elaborado pode ser necessário
+                return NotFound(ex.Message);
+            }
+
+            return NoContent();
+        }
+
     }
 }

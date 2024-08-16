@@ -82,6 +82,26 @@ namespace Biblioteca.API.Controllers
 
         //    return NoContent();
         //}
+        [HttpPut("{id}")]
+        public IActionResult PutBook(int id, [FromBody] UpdateLivroInputModel updateLivro)
+        {
+            if (updateLivro.Titulo == null || updateLivro.Autor == null || updateLivro.ISBN == null || updateLivro.AnoPublicacao <= 0)
+            {
+                return BadRequest("Dados inválidos.");
+            }
+
+            try
+            {
+                _livroService.Update(id, updateLivro);
+            }
+            catch (Exception ex)
+            {
+                // Você pode ter um tratamento de exceções mais elaborado
+                return NotFound(ex.Message);
+            }
+
+            return NoContent();
+        }
 
 
         [HttpDelete("{id}")]

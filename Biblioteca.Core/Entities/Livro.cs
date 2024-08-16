@@ -39,5 +39,18 @@ namespace Biblioteca.Core.Entities
             }
         }
 
+
+        public void Update(string titulo, string autor, string isbn, int anoPublicacao)
+        {
+            Titulo = titulo;   
+            Autor = autor;
+            ISBN = isbn;
+            AnoPublicacao = anoPublicacao;
+
+        }
+
+
+        
+
     }
 }

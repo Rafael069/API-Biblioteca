@@ -7,6 +7,7 @@ namespace Biblioteca.Application.Services
     {
         List<UsuarioViewModel> GetAll();
         UsuarioDetailsViewModel GetById(int id);
+        void Update(UpdateUsuarioInputModel inputModel);
         int Create(NewUsuarioInputModel inputModel);
         void Delete(int id);
     }

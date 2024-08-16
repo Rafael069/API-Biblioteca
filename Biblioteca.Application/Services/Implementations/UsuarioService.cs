@@ -71,5 +71,21 @@ namespace Biblioteca.Application.Services.Implementations
             return usuario.Id;
 
         }
+
+        public void Update(UpdateUsuarioInputModel inputModel)
+        {
+            var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Id == inputModel.Id);
+
+            if (usuario == null)
+            {
+                throw new Exception("Usuário não encontrado.");
+            }
+
+            // Atualizar as propriedades do usuário
+            usuario.Update(inputModel.Nome, inputModel.Email);
+
+
+        }
+
     }
 }

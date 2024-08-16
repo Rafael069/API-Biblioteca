@@ -9,7 +9,7 @@ namespace Biblioteca.Application.Services
         List<LivroViewModel> GetAll();
         LivroDetailsViewModel GetById(int id);
         int Create(NewLivroInputModel inputModel);
-        //void Update(UpdateLivroInputModel inputModel);
+        void Update(int id,UpdateLivroInputModel inputModel);
         void Delete(int id);
     }
 }

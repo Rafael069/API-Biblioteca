@@ -67,5 +67,23 @@ namespace Biblioteca.API.Controllers
 
         }
 
+        [HttpPut("returnBook")]
+        public IActionResult ReturnBook([FromBody] UpdateEmprestimoInputModel inputModel)
+        {
+            try
+            {
+                //_emprestimoService.Update(inputModel);
+                //var status = _emprestimoService.VerificarStatusDevolucao(id);
+                //var status = _emprestimoService.GetStatusDevolucao(inputModel.Id);
+                var status = _emprestimoService.GetStatusDevolucao(inputModel);
+                //var status = "OK";
+                return Ok(new { Mensagem = status });
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
     }
 }
