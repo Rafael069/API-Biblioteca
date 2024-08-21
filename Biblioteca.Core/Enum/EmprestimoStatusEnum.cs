@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Core.Enum
 {
-    public enum LivroStatusEnum
+    public enum EmprestimoStatusEnum
     {
-        Removido = 0,
-        Ativo = 1
-        
+        Ativo,
+        Devolvido
     }
 }

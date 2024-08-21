@@ -46,8 +46,6 @@ namespace Biblioteca.API.Controllers
 
 
 
-
-
         [HttpPost]
         public IActionResult Post([FromBody] NewEmprestimoInputModel inputModel)
         {

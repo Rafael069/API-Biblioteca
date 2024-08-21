@@ -24,5 +24,6 @@ namespace Biblioteca.Application.ViewModels
         public int LivroId { get; private set; }
         public DateTime DataEmprestimo { get; private set; }
         public DateTime DataDevolucao { get; private set; }
+
     }
 }

@@ -2,6 +2,7 @@
 using Biblioteca.Application.Services.Interfaces;
 using Biblioteca.Application.ViewModels;
 using Biblioteca.Core.Entities;
+using Biblioteca.Core.Enum;
 using Biblioteca.Infrastructure.Persistence;
 
 
@@ -21,9 +22,17 @@ namespace Biblioteca.Application.Services.Implementations
             var emprestimos = _dbContext.Emprestimos;
 
 
-            var emprestimosViewModel = emprestimos
-               .Select(e => new EmprestimoViewModel(e.Id, e.UsuarioId, e.LivroId, e.DataEmprestimo, e.DataDevolucao))
-               .ToList();
+            var emprestimosAtivos = _dbContext.Emprestimos
+                .Where(l => l.Status == EmprestimoStatusEnum.Ativo)
+                .ToList();
+
+            var emprestimosViewModel = emprestimosAtivos
+                .Select(e => new EmprestimoViewModel(e.Id, e.UsuarioId, e.LivroId, e.DataEmprestimo, e.DataDevolucao))
+                .ToList();
+
+            //var emprestimosViewModel = emprestimos
+            //   .Select(e => new EmprestimoViewModel(e.Id, e.UsuarioId, e.LivroId, e.DataEmprestimo, e.DataDevolucao))
+            //   .ToList();
 
 
             return emprestimosViewModel;
@@ -49,24 +58,30 @@ namespace Biblioteca.Application.Services.Implementations
 
         public EmprestimoDetailsViewModel GetById(int id)
         {
-            //throw new NotImplementedException();
-            //Id = id;
-            //UsuarioId = usuarioId;
-            //LivroId = livroId;
-            //DataEmprestimo = DateTime.Now;
-            //DataDevolucao = dataDevolucao;
+            // Filtra pelo ID e pelo status Ativo
+            //var livros = _dbContext.Livros
+            //                      .Where(l => l.Id == id && l.Status == LivroStatusEnum.Ativo)
+            //                      .SingleOrDefault();
+
+            //var livroDetailsViewModel = new LivroDetailsViewModel(
+            //    livros.Id,
+            //    livros.Titulo,
+            //    livros.Autor,
+            //    livros.ISBN,
+            //    livros.AnoPublicacao
+            //    );
+
+            //return livroDetailsViewModel;
 
 
-            var emprestimos = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == id);
-
+            //var emprestimos = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == id);
+            var emprestimos = _dbContext.Emprestimos.Where(e => e.Id == id && e.Status == EmprestimoStatusEnum.Ativo)
+                                                    .SingleOrDefault();
 
             if (emprestimos == null)
             {
                 return null; // Ou você pode lançar uma exceção
             }
-
-            // Obter o usuário associado
-            //var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Id == emprestimos.UsuarioId);
 
             var emprestimoDetailsViewModel = new EmprestimoDetailsViewModel(
                 emprestimos.Id,
@@ -91,6 +106,8 @@ namespace Biblioteca.Application.Services.Implementations
             );
 
             _dbContext.Emprestimos.Add(novoEmprestimo);
+            _dbContext.SaveChanges();
+
             return novoEmprestimo.Id;
         }
 

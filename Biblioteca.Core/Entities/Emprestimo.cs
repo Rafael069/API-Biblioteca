@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca.Core.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Biblioteca.Core.Entities
             LivroId = livroId;
             DataEmprestimo = DateTime.Now;
             DataDevolucao = dataDevolucao;
+            Status = EmprestimoStatusEnum.Ativo;
 
         }
 
@@ -23,14 +25,11 @@ namespace Biblioteca.Core.Entities
         public int LivroId { get; private set; }
         public DateTime DataEmprestimo { get; private set; }
         public DateTime DataDevolucao { get; private set; }
-
+        public EmprestimoStatusEnum Status { get; set; }
         public Usuario? Usuario { get; private set; }
         public Livro? Livro { get; private set; }
 
-        public void UpdateDataDevolucao(DateTime dataDevolucao)
-        {
-            DataDevolucao = dataDevolucao;
-        }
+
 
         public string GetStatusDevolucao(DateTime dataDevolucao)
         {
@@ -39,6 +38,7 @@ namespace Biblioteca.Core.Entities
             var atraso = dataDevolucao.Date.Subtract(DataDevolucao.Date).Days;
             if (atraso > 0)
             {
+                Status = EmprestimoStatusEnum.Devolvido;
                 return $"Atrasado em {atraso} dias.";
             }
             else

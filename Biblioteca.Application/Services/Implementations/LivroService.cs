@@ -22,8 +22,9 @@ namespace Biblioteca.Application.Services.Implementations
 
         public int Create(NewLivroInputModel inputModel)
         {
-            var livro = new Livro(inputModel.Id,inputModel.Titulo, inputModel.Autor, inputModel.ISBN, inputModel.AnoPublicacao);
+            var livro = new Livro(/*inputModel.Id,*/inputModel.Titulo, inputModel.Autor, inputModel.ISBN, inputModel.AnoPublicacao);
             _dbContext.Livros.Add(livro);
+            _dbContext.SaveChanges();
 
             return livro.Id;
 
@@ -34,7 +35,7 @@ namespace Biblioteca.Application.Services.Implementations
             var livro = _dbContext.Livros.SingleOrDefault(l => l.Id == id);
 
             livro.Cancel();
-
+            _dbContext.SaveChanges();
         }
 
         public List<LivroViewModel> GetAll()
@@ -85,7 +86,7 @@ namespace Biblioteca.Application.Services.Implementations
             }
 
             livro.Update(inputModel.Titulo, inputModel.Autor,inputModel.ISBN,inputModel.AnoPublicacao);
-
+            _dbContext.SaveChanges();
         }
 
     }

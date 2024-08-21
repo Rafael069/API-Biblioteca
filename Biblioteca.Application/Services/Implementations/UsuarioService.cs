@@ -25,7 +25,7 @@ namespace Biblioteca.Application.Services.Implementations
             var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Id == id);
 
             usuario.Cancel();
-
+            _dbContext.SaveChanges();
         }
 
         public List<UsuarioViewModel> GetAll()
@@ -65,8 +65,9 @@ namespace Biblioteca.Application.Services.Implementations
 
         public int Create(NewUsuarioInputModel inputModel)
         {
-            var usuario = new Usuario(inputModel.Id, inputModel.Nome, inputModel.Email);
+            var usuario = new Usuario(/*inputModel.Id,*/ inputModel.Nome, inputModel.Email);
             _dbContext.Usuarios.Add(usuario);
+            _dbContext.SaveChanges();
 
             return usuario.Id;
 
@@ -83,7 +84,7 @@ namespace Biblioteca.Application.Services.Implementations
 
             // Atualizar as propriedades do usuário
             usuario.Update(inputModel.Nome, inputModel.Email);
-
+            _dbContext.SaveChanges();
 
         }
 
