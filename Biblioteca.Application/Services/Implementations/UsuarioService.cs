@@ -24,7 +24,7 @@ namespace Biblioteca.Application.Services.Implementations
         {
             var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Id == id);
 
-            usuario.Cancel();
+             usuario.Cancel();
             _dbContext.SaveChanges();
         }
 
@@ -38,11 +38,11 @@ namespace Biblioteca.Application.Services.Implementations
                 .ToList();
 
 
-            var usuariosViewModel = usuarios
-              .Select(u => new UsuarioViewModel(u.Id,u.Nome, u.Email))
+            var usuariosViewModel = usuariosAtivos
+              .Select(u => new UsuarioViewModel(u.Id, u.Nome, u.Email))
               .ToList();
 
-            
+
 
             return usuariosViewModel;
         }

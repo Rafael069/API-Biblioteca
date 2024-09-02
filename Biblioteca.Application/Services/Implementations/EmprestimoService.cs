@@ -95,19 +95,50 @@ namespace Biblioteca.Application.Services.Implementations
         }
 
 
+        //public string Devolver(UpdateEmprestimoInputModel inputModel)
+        //{
+        //    // Obtém o empréstimo do banco de dados com base no ID fornecido
+        //    var emprestimo = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == inputModel.Id);
+
+        //    // Verifica se o empréstimo foi encontrado
+        //    if (emprestimo != null)
+        //    {
+        //        // Atualiza a data de devolução no objeto de empréstimo
+        //         return emprestimo.Devolver(inputModel.DataDevolucao);
+
+        //        // Salva as mudanças no banco de dados
+        //        _dbContext.SaveChanges();
+
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("Empréstimo não encontrado.");
+        //    }
+        //}
+
+
         public string Devolver(UpdateEmprestimoInputModel inputModel)
         {
+            // Obtém o empréstimo do banco de dados com base no ID fornecido
             var emprestimo = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == inputModel.Id);
+
+            // Verifica se o empréstimo foi encontrado
             if (emprestimo != null)
             {
-                //return emprestimo.GetStatusDevolucao();
-                return emprestimo.Devolver(inputModel.DataDevolucao);
+                // Atualiza a data de devolução e o status
+                var status = emprestimo.Devolver(inputModel.DataDevolucao);
+
+                // Salva as mudanças no banco de dados
+                _dbContext.SaveChanges();
+
+                return status;
             }
             else
             {
                 throw new Exception("Empréstimo não encontrado.");
             }
         }
+
 
     }
 }

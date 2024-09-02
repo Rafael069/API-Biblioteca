@@ -31,21 +31,46 @@ namespace Biblioteca.Core.Entities
 
 
         // renomear
+        //public string Devolver(DateTime dataDevolucao)
+        //{
+
+
+        //    var atraso = dataDevolucao.Date.Subtract(DataDevolucao.Date).Days;
+        //    if (atraso > 0)
+        //    {
+        //        Status = EmprestimoStatusEnum.Devolvido;
+
+        //        return $"Atrasado em {atraso} dias.";
+        //    }
+        //    else
+        //    {
+        //        return "Devolução em dia.";
+        //    }
+        //}
+
+
         public string Devolver(DateTime dataDevolucao)
         {
-            
-            
-            var atraso = dataDevolucao.Date.Subtract(DataDevolucao.Date).Days;
+
+
+            // Calcula a diferença em dias considerando a data de devolução completa
+            var atraso = (dataDevolucao.Date - DataDevolucao.Date).Days;
+
+            // Atualiza o status
             if (atraso > 0)
             {
+                DataDevolucao = dataDevolucao;
                 Status = EmprestimoStatusEnum.Devolvido;
                 return $"Atrasado em {atraso} dias.";
             }
             else
             {
+                Status = EmprestimoStatusEnum.Devolvido;
                 return "Devolução em dia.";
             }
         }
+
+
 
 
     }
