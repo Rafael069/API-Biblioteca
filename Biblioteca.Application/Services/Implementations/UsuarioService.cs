@@ -65,7 +65,7 @@ namespace Biblioteca.Application.Services.Implementations
 
         public int Create(NewUsuarioInputModel inputModel)
         {
-            var usuario = new Usuario(/*inputModel.Id,*/ inputModel.Nome, inputModel.Email);
+            var usuario = new Usuario(inputModel.Nome, inputModel.Email);
             _dbContext.Usuarios.Add(usuario);
             _dbContext.SaveChanges();
 

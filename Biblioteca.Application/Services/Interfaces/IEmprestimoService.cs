@@ -13,9 +13,8 @@ namespace Biblioteca.Application.Services.Interfaces
         List<EmprestimoViewModel> GetAll();
         EmprestimoDetailsViewModel GetById(int id);
         int Create(NewEmprestimoInputModel inputModel);
-        string GetStatusDevolucao(UpdateEmprestimoInputModel inputModel);
-        //string GetStatusDevolucao(int id);
-        //void Update(UpdateEmprestimoInputModel inputModel);
+        string Devolver(UpdateEmprestimoInputModel inputModel);
+
 
     }
 }

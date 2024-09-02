@@ -8,7 +8,7 @@ namespace Biblioteca.Application.InputModels
 {
     public class NewEmprestimoInputModel
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public int UsuarioId { get; set; }
         public int LivroId { get; set; }
         public DateTime DataEmprestimo { get; set; }

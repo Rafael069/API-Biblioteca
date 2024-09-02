@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Core.Entities
 {
-    public class Emprestimo /*: BaseEntity*/
+    public class Emprestimo : BaseEntity
     {
-        public Emprestimo(int id, int usuarioId, int livroId, DateTime dataEmprestimo, DateTime dataDevolucao)
+        public Emprestimo(int usuarioId, int livroId, DateTime dataEmprestimo, DateTime dataDevolucao)
         {
-            Id = id;
+            
             UsuarioId = usuarioId;
             LivroId = livroId;
-            DataEmprestimo = DateTime.Now;
+            DataEmprestimo = dataEmprestimo;
             DataDevolucao = dataDevolucao;
             Status = EmprestimoStatusEnum.Ativo;
 
         }
 
-        public int Id { get; private set; }
+        
         public int UsuarioId { get; private set; }
         public int LivroId { get; private set; }
         public DateTime DataEmprestimo { get; private set; }
@@ -30,10 +30,10 @@ namespace Biblioteca.Core.Entities
         public Livro? Livro { get; private set; }
 
 
-
-        public string GetStatusDevolucao(DateTime dataDevolucao)
+        // renomear
+        public string Devolver(DateTime dataDevolucao)
         {
-            //var hoje = DateTime.Now;
+            
             
             var atraso = dataDevolucao.Date.Subtract(DataDevolucao.Date).Days;
             if (atraso > 0)
@@ -46,24 +46,6 @@ namespace Biblioteca.Core.Entities
                 return "Devolução em dia.";
             }
         }
-
-        //public string VerificarStatusDevolucao()
-        //{
-        //    if (DataDevolucao.HasVlue)
-        //    {
-        //        var hoje = DateTime.Now;
-        //        var atraso = hoje.Date.Subtract(DataDevolucao.Value.Date).Days;
-        //        if (atraso > 0)
-        //        {
-        //            return $"Atrasado em {atraso} dias.";
-        //        }
-        //        else
-        //        {
-        //            return "Devolução em dia.";
-        //        }
-        //    }
-        //    return "Livro ainda não devolvido.";
-        //}
 
 
     }

@@ -58,29 +58,14 @@ namespace Biblioteca.Application.Services.Implementations
 
         public EmprestimoDetailsViewModel GetById(int id)
         {
-            // Filtra pelo ID e pelo status Ativo
-            //var livros = _dbContext.Livros
-            //                      .Where(l => l.Id == id && l.Status == LivroStatusEnum.Ativo)
-            //                      .SingleOrDefault();
 
-            //var livroDetailsViewModel = new LivroDetailsViewModel(
-            //    livros.Id,
-            //    livros.Titulo,
-            //    livros.Autor,
-            //    livros.ISBN,
-            //    livros.AnoPublicacao
-            //    );
-
-            //return livroDetailsViewModel;
-
-
-            //var emprestimos = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == id);
+           
             var emprestimos = _dbContext.Emprestimos.Where(e => e.Id == id && e.Status == EmprestimoStatusEnum.Ativo)
                                                     .SingleOrDefault();
 
             if (emprestimos == null)
             {
-                return null; // Ou você pode lançar uma exceção
+                return null;
             }
 
             var emprestimoDetailsViewModel = new EmprestimoDetailsViewModel(
@@ -97,8 +82,6 @@ namespace Biblioteca.Application.Services.Implementations
         public int Create(NewEmprestimoInputModel inputModel)
         {
             var novoEmprestimo = new Emprestimo(
-                _dbContext.Emprestimos.Max(e => e.Id) + 1,
-                //inputModel.Id,
                 inputModel.UsuarioId,
                 inputModel.LivroId,
                 inputModel.DataEmprestimo,
@@ -111,28 +94,14 @@ namespace Biblioteca.Application.Services.Implementations
             return novoEmprestimo.Id;
         }
 
-        //public void Update(UpdateEmprestimoInputModel inputModel)
-        //{
-        //    var emprestimo = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == inputModel.Id);
-        //    if (emprestimo != null)
-        //    {
-        //        emprestimo.UpdateDataDevolucao(inputModel.DataDevolucao);
-        //        //_dbContext.SaveChanges();
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("Empréstimo não encontrado.");
-        //    }
-        //}
 
-        //public string GetStatusDevolucao(int emprestimoId)
-        public string GetStatusDevolucao(UpdateEmprestimoInputModel inputModel)
+        public string Devolver(UpdateEmprestimoInputModel inputModel)
         {
             var emprestimo = _dbContext.Emprestimos.SingleOrDefault(e => e.Id == inputModel.Id);
             if (emprestimo != null)
             {
                 //return emprestimo.GetStatusDevolucao();
-                return emprestimo.GetStatusDevolucao(inputModel.DataDevolucao);
+                return emprestimo.Devolver(inputModel.DataDevolucao);
             }
             else
             {

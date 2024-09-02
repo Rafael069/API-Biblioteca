@@ -22,7 +22,7 @@ namespace Biblioteca.Application.Services.Implementations
 
         public int Create(NewLivroInputModel inputModel)
         {
-            var livro = new Livro(/*inputModel.Id,*/inputModel.Titulo, inputModel.Autor, inputModel.ISBN, inputModel.AnoPublicacao);
+            var livro = new Livro(inputModel.Titulo, inputModel.Autor, inputModel.ISBN, inputModel.AnoPublicacao);
             _dbContext.Livros.Add(livro);
             _dbContext.SaveChanges();
 

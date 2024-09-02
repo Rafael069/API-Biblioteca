@@ -55,13 +55,10 @@ namespace Biblioteca.API.Controllers
                 return BadRequest("Dados inválidos para empréstimo.");
             }
 
-            //var id = _emprestimoService.Create(inputModel);
-
-            //return Ok();
             var id = _emprestimoService.Create(inputModel);
             return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
 
-            //return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
+
 
         }
 
@@ -70,11 +67,8 @@ namespace Biblioteca.API.Controllers
         {
             try
             {
-                //_emprestimoService.Update(inputModel);
-                //var status = _emprestimoService.VerificarStatusDevolucao(id);
-                //var status = _emprestimoService.GetStatusDevolucao(inputModel.Id);
-                var status = _emprestimoService.GetStatusDevolucao(inputModel);
-                //var status = "OK";
+
+                var status = _emprestimoService.Devolver(inputModel);
                 return Ok(new { Mensagem = status });
             }
             catch (Exception ex)

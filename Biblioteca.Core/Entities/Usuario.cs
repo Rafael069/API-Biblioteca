@@ -10,16 +10,16 @@ namespace Biblioteca.Core.Entities
     public class Usuario : BaseEntity
     {
 
-        public Usuario(/*int id,*/ string nome, string email)
+        public Usuario(string nome, string email)
         {
-            //Id = id;
+            
             Nome = nome;
             Email = email;
             Status = UsuarioStatusEnum.Ativo;
 
             Emprestimos = new List<Emprestimo>();
         }
-        //public int Id { get; private set; }
+        
         public string Nome { get; private set; }
         public string Email { get; private set; }
         public UsuarioStatusEnum Status { get; set; }

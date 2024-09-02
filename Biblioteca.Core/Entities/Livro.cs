@@ -9,9 +9,9 @@ namespace Biblioteca.Core.Entities
 {
     public class Livro : BaseEntity
     {
-        public Livro(/*int id,*/string titulo, string autor, string iSBN, int anoPublicacao)
+        public Livro(string titulo, string autor, string iSBN, int anoPublicacao)
         {
-            //Id = id;
+
             Titulo = titulo;
             Autor = autor;
             ISBN = iSBN;
@@ -21,7 +21,7 @@ namespace Biblioteca.Core.Entities
             Emprestimos = new List<Emprestimo>();
         }
 
-        //public int Id { get; private set; }
+
         public string Titulo { get; private set; }
         public string Autor { get; private set; }
         public string ISBN { get; private set; }
@@ -48,9 +48,6 @@ namespace Biblioteca.Core.Entities
             AnoPublicacao = anoPublicacao;
 
         }
-
-
-        
 
     }
 }
