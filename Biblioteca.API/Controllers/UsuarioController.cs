@@ -176,7 +176,7 @@ namespace Biblioteca.API.Controllers
 
         [HttpPut("{id}")]
         //[HttpPut]
-        public async Task<IActionResult> PutUser([FromBody] UpdateUsuarioCommand command)
+        public async Task<IActionResult> PutUser(int id, [FromBody] UpdateUsuarioCommand command)
         {
             if (command.Nome == null || command.Email == null)
             {

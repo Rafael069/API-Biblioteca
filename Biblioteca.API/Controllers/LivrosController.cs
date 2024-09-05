@@ -177,8 +177,8 @@ namespace Biblioteca.API.Controllers
         //    return NoContent();
         //}
 
-        //[HttpPut("{id}")]
-        [HttpPut]
+        [HttpPut("{id}")]
+        //[HttpPut]
 
         public async Task<IActionResult> PutBook(int id, [FromBody] UpdateLivroCommand command)
         {
