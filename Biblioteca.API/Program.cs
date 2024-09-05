@@ -1,7 +1,9 @@
-using Biblioteca.Application.Services;
-using Biblioteca.Application.Services.Implementations;
-using Biblioteca.Application.Services.Interfaces;
+using Biblioteca.Application.Commands.Livros.CreateLivro;
+//using Biblioteca.Application.Services;
+//using Biblioteca.Application.Services.Implementations;
+//using Biblioteca.Application.Services.Interfaces;
 using Biblioteca.Infrastructure.Persistence;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Biblioteca.API
@@ -16,12 +18,18 @@ namespace Biblioteca.API
 
 
             //builder.Services.AddSingleton<BibliotecaDbContext>();
+
             var connectionString = builder.Configuration.GetConnectionString("BibliotecaCs");
             builder.Services.AddDbContext<BibliotecaDbContext>(options => options.UseSqlServer(connectionString));
-            builder.Services.AddScoped<IEmprestimoService,EmprestimoService>();
-            builder.Services.AddScoped<ILivroService, LivroService>();
-            builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+            //builder.Services.AddScoped<IEmprestimoService, EmprestimoService>();
+
+            //builder.Services.AddScoped<ILivroService, LivroService>();
+
+            //builder.Services.AddScoped<IUsuarioService, UsuarioService>();
             builder.Services.AddControllers();
+
+            builder.Services.AddMediatR(opt => opt.RegisterServicesFromAssemblyContaining(typeof(CreateLivroCommand)));
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
