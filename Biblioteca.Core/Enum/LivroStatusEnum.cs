@@ -1,5 +1,4 @@
 ﻿
-
 namespace Biblioteca.Core.Enum
 {
     public enum LivroStatusEnum

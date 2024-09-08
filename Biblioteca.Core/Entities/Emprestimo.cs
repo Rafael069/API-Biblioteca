@@ -1,9 +1,5 @@
 ﻿using Biblioteca.Core.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Biblioteca.Core.Entities
 {
@@ -29,24 +25,6 @@ namespace Biblioteca.Core.Entities
         public Usuario? Usuario { get; private set; }
         public Livro? Livro { get; private set; }
 
-
-        // renomear
-        //public string Devolver(DateTime dataDevolucao)
-        //{
-
-
-        //    var atraso = dataDevolucao.Date.Subtract(DataDevolucao.Date).Days;
-        //    if (atraso > 0)
-        //    {
-        //        Status = EmprestimoStatusEnum.Devolvido;
-
-        //        return $"Atrasado em {atraso} dias.";
-        //    }
-        //    else
-        //    {
-        //        return "Devolução em dia.";
-        //    }
-        //}
 
 
         public string Devolver(DateTime dataDevolucao)

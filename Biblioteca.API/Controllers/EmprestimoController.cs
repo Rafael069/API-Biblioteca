@@ -18,26 +18,16 @@ namespace Biblioteca.API.Controllers
     public class EmprestimoController : ControllerBase
     {
 
-        //private readonly IEmprestimoService _emprestimoService;
         private readonly IMediator _mediator;
 
-        // Buscar todo os livros
 
-        public EmprestimoController(/*IEmprestimoService emprestimoService, */IMediator mediator)
+        public EmprestimoController(IMediator mediator)
         {
-            //_emprestimoService = emprestimoService;
             _mediator = mediator;
         }
 
 
-        //[HttpGet]
-        //public IActionResult GetAll()
-        //{
-        //    var emprestimos = _emprestimoService.GetAll();
-        //    return Ok(emprestimos);
-        //}
-
-
+        // Buscar todo os Emprestimos
 
         [HttpGet]
         [Route("all")]
@@ -50,20 +40,8 @@ namespace Biblioteca.API.Controllers
             return Ok(emprestimos);
         }
 
+
         // Buscar um Emprestimo
-
-        //[HttpGet("{id}")]
-        //public IActionResult GetById(int id)
-        //{
-        //    var emprestimos = _emprestimoService.GetById(id);
-
-        //    if (emprestimos == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(emprestimos);
-        //}
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -78,7 +56,6 @@ namespace Biblioteca.API.Controllers
             }
             catch (EmprestimoNaoEncontradoException ex)
             {
-
                 return NotFound(ex.Message);
             }
             catch (Exception ex)
@@ -87,26 +64,10 @@ namespace Biblioteca.API.Controllers
                 return StatusCode(500, "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.");
             }
 
-            
+
         }
 
-
-
-        //[HttpPost]
-        //public IActionResult Post([FromBody] NewEmprestimoInputModel inputModel)
-        //{
-        //    // Exemplo
-        //    if (inputModel == null || inputModel.DataDevolucao <= inputModel.DataEmprestimo)
-        //    {
-        //        return BadRequest("Dados inválidos para empréstimo.");
-        //    }
-
-        //    var id = _emprestimoService.Create(inputModel);
-        //    return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
-
-        //}
-
-
+        // Criar um Emprestimo
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateEmprestimoCommand command)
@@ -122,21 +83,10 @@ namespace Biblioteca.API.Controllers
 
         }
 
-        //[HttpPut("returnBook")]
-        //public IActionResult ReturnBook([FromBody] UpdateEmprestimoInputModel inputModel)
-        //{
-        //    try
-        //    {
 
-        //        var status = _emprestimoService.Devolver(inputModel);
-        //        return Ok(new { Mensagem = status });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return NotFound(ex.Message);
-        //    }
-        //}
 
+
+        // Retorma o Livro e atualiza o status do  Emprestimo
 
         [HttpPut("returnBook")]
         public async Task<IActionResult> ReturnBook([FromBody] UpdateDevolverCommand command)
