@@ -1,6 +1,5 @@
 ﻿using Biblioteca.Core.Enum;
 
-
 namespace Biblioteca.Core.Entities
 {
     public class Emprestimo : BaseEntity
@@ -15,7 +14,6 @@ namespace Biblioteca.Core.Entities
             Status = EmprestimoStatusEnum.Ativo;
 
         }
-
         
         public int UsuarioId { get; private set; }
         public int LivroId { get; private set; }
@@ -26,10 +24,8 @@ namespace Biblioteca.Core.Entities
         public Livro? Livro { get; private set; }
 
 
-
         public string Devolver(DateTime dataDevolucao)
         {
-
 
             // Calcula a diferença em dias considerando a data de devolução completa
             var atraso = (dataDevolucao.Date - DataDevolucao.Date).Days;

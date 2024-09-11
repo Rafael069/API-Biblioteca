@@ -1,29 +1,24 @@
-﻿using Biblioteca.Application.Commands.Usuarios.CreateUsuario;
-using Biblioteca.Core.Entities;
-using Biblioteca.Infrastructure.Persistence;
+﻿using Biblioteca.Core.Entities;
+using Biblioteca.Core.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Biblioteca.Application.Commands.Usuarios.CreateUsuario
 {
     public class CreateUsuarioCommandHandler : IRequestHandler<CreateUsuarioCommand, int>
     {
-        private readonly BibliotecaDbContext _dbContext;
+        private readonly IUsuarioRepository _usuarioRepository;
 
-        public CreateUsuarioCommandHandler(BibliotecaDbContext dbContext)
+        public CreateUsuarioCommandHandler(IUsuarioRepository usuarioRepository)
         {
-            _dbContext = dbContext;
+            _usuarioRepository = usuarioRepository;
         }
 
         public async Task<int> Handle(CreateUsuarioCommand request, CancellationToken cancellationToken)
         {
+
             var usuario = new Usuario(request.Nome, request.Email);
-            await _dbContext.Usuarios.AddAsync(usuario);
-            await _dbContext.SaveChangesAsync();
+            await _usuarioRepository.AddUsuarioAsync(usuario);
 
             return usuario.Id;
         }

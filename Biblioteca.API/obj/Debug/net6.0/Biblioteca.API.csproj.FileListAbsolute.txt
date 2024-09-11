@@ -60,6 +60,7 @@ C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.AssemblyInfoInputs.cache
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.AssemblyInfo.cs
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.csproj.CoreCompileInputs.cache
+C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.MvcApplicationPartsAssemblyInfo.cs
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.MvcApplicationPartsAssemblyInfo.cache
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.sourcelink.json
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\staticwebassets.build.json
@@ -76,4 +77,3 @@ C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.pdb
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.genruntimeconfig.cache
 C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\ref\Biblioteca.API.dll
-C:\MentoriaDiretoAoPonto\Gerenciador de Biblioteca\Biblioteca\Biblioteca.API\obj\Debug\net6.0\Biblioteca.API.MvcApplicationPartsAssemblyInfo.cs

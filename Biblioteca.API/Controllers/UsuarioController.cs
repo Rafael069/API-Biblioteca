@@ -7,10 +7,13 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Biblioteca.Core.Exceptions;
 
+
 namespace Biblioteca.API.Controllers
 {
+
     [ApiController]
     [Route("api/usuarios")]
+
     public class UsuarioController : ControllerBase
     {
 
@@ -35,6 +38,7 @@ namespace Biblioteca.API.Controllers
             return Ok(usuarios);
         }
 
+
         // Buscar um livro
 
         [HttpGet("{id}")]
@@ -48,14 +52,14 @@ namespace Biblioteca.API.Controllers
 
                 return Ok(usuarios);
             }
+
             catch (UsuarioNaoEncontradoException ex)
             {
-
                 return NotFound(ex.Message);
             }
+
             catch (Exception ex)
             {
-
                 return StatusCode(500, "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.");
             }
             
@@ -67,7 +71,7 @@ namespace Biblioteca.API.Controllers
         [HttpPost]
         public async Task<IActionResult> PostUser([FromBody] CreateUsuarioCommand command)
         {
-            // Exemplo
+            
             if (command.Nome == null)
             {
                 return BadRequest();
@@ -79,6 +83,7 @@ namespace Biblioteca.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
 
         }
+
 
         // Deletar um Usuário
 
@@ -108,14 +113,12 @@ namespace Biblioteca.API.Controllers
             }
             catch (Exception ex)
             {
-                // Tratamento de exceções mais elaborado pode ser necessário
+                
                 return NotFound(ex.Message);
             }
 
             return NoContent();
         }
-
-
 
     }
 }

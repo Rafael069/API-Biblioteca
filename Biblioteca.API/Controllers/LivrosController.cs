@@ -52,13 +52,14 @@ namespace Biblioteca.API.Controllers
 
                 return Ok(livros);
             }
+
             catch (LivroNaoEncontradoException ex)
             {
                 return NotFound(ex.Message);
             }
+
             catch (Exception ex)
             {
-
                 return StatusCode(500, "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.");
             }
 
@@ -70,7 +71,6 @@ namespace Biblioteca.API.Controllers
         [HttpPost]
         public async Task<IActionResult> PostBook([FromBody] CreateLivroCommand command)
         {
-            // Validação
             if (command.Titulo == null)
             {
                 return BadRequest();
@@ -82,8 +82,7 @@ namespace Biblioteca.API.Controllers
 
         }
 
-
-
+        // Atualizar  um livro
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBook(int id, [FromBody] UpdateLivroCommand command)
         {
@@ -96,14 +95,16 @@ namespace Biblioteca.API.Controllers
             {
                 await _mediator.Send(command);
             }
+
             catch (Exception ex)
             {
-
                 return NotFound(ex.Message);
             }
 
             return NoContent();
         }
+
+
 
         // Deletar um livro
 

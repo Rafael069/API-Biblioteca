@@ -1,25 +1,22 @@
 ﻿using Biblioteca.Application.Commands.Emprestimos.CreateEmprestimo;
 using Biblioteca.Application.Commands.Emprestimos.UpdateDevolver;
 using Biblioteca.Application.Queries.Emprestimos.GetAllEmprestimos;
-//using Biblioteca.Application.Queries.Livros.GetAllLivros;
 using Biblioteca.Application.Queries.Emprestimos.GetByEmprestimo;
-//using Biblioteca.Application.Queries.Livros.GetByIdLivro;
-//using Biblioteca.Application.Services;
-
-//using Biblioteca.Application.Services.Interfaces;
 using Biblioteca.Core.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace Biblioteca.API.Controllers
 {
+
     [ApiController]
     [Route("api/emprestimo")]
+
     public class EmprestimoController : ControllerBase
     {
 
         private readonly IMediator _mediator;
-
 
         public EmprestimoController(IMediator mediator)
         {
@@ -54,10 +51,12 @@ namespace Biblioteca.API.Controllers
 
                 return Ok(emprestimos);
             }
+
             catch (EmprestimoNaoEncontradoException ex)
             {
                 return NotFound(ex.Message);
             }
+
             catch (Exception ex)
             {
 
@@ -72,7 +71,7 @@ namespace Biblioteca.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateEmprestimoCommand command)
         {
-            // Exemplo
+            
             if (command == null || command.DataDevolucao <= command.DataEmprestimo)
             {
                 return BadRequest("Dados inválidos para empréstimo.");
@@ -84,8 +83,6 @@ namespace Biblioteca.API.Controllers
         }
 
 
-
-
         // Retorma o Livro e atualiza o status do  Emprestimo
 
         [HttpPut("returnBook")]
@@ -93,7 +90,6 @@ namespace Biblioteca.API.Controllers
         {
             try
             {
-
                 // Envia o comando e obtém o resultado
                 var result = await _mediator.Send(command);
 

@@ -15,10 +15,6 @@ namespace Biblioteca.Application.ViewModels
             Email = email;
         }
 
-        //Id = id;
-        //    Nome = nome;
-        //    Email = email;
-
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Email { get; private set; }

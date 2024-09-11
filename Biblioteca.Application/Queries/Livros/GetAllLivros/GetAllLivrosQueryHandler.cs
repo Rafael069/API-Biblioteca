@@ -1,37 +1,29 @@
 ﻿using Biblioteca.Application.ViewModels;
-using Biblioteca.Core.Enum;
-using Biblioteca.Infrastructure.Persistence;
+using Biblioteca.Core.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Biblioteca.Application.Queries.Livros.GetAllLivros
 {
     public class GetAllLivrosQueryHandler : IRequestHandler<GetAllLivrosQuery, List<LivroViewModel>>
     {
-        private readonly BibliotecaDbContext _dbContext;
 
-        public GetAllLivrosQueryHandler(BibliotecaDbContext dbContext)
+        private readonly ILivroRepository _livroRepository;
+
+
+        public GetAllLivrosQueryHandler(ILivroRepository livroRepository)
         {
-            _dbContext = dbContext;
+            _livroRepository = livroRepository;
         }
+
+
         public async Task<List<LivroViewModel>> Handle(GetAllLivrosQuery request, CancellationToken cancellationToken)
         {
-            var livros = _dbContext.Livros;
+            var livros = await _livroRepository.GetAllLivrosAsync();
 
-            // Filtrando livros ativos
-            var livrosAtivos = await _dbContext.Livros
-                .Where(l => l.Status == LivroStatusEnum.Ativo)
-                //.ToListAsync(cancellationToken);
-                .ToListAsync();
-
-            var livrosViewModel = livrosAtivos
-            .Select(l => new LivroViewModel(l.Id, l.Titulo, l.Autor))
-            .ToList();
+            var livrosViewModel = livros
+                .Select(l => new LivroViewModel(l.Id, l.Titulo, l.Autor))
+                .ToList();
 
             return livrosViewModel;
         }

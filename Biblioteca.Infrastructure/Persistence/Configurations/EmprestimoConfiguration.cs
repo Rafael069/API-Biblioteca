@@ -1,12 +1,6 @@
 ﻿using Biblioteca.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Biblioteca.Infrastructure.Persistence.Configurations
 {
@@ -25,7 +19,6 @@ namespace Biblioteca.Infrastructure.Persistence.Configurations
                 .WithMany(l => l.Emprestimos)
                 .HasForeignKey(e => e.LivroId)
                 .OnDelete(DeleteBehavior.Restrict); // Configurar comportamento de deleção
-
 
 
             // Configurar relacionamento entre Usuario e Emprestimo

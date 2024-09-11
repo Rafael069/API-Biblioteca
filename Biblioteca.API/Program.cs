@@ -1,8 +1,7 @@
 using Biblioteca.Application.Commands.Livros.CreateLivro;
-//using Biblioteca.Application.Services;
-//using Biblioteca.Application.Services.Implementations;
-//using Biblioteca.Application.Services.Interfaces;
+using Biblioteca.Core.Interfaces;
 using Biblioteca.Infrastructure.Persistence;
+using Biblioteca.Infrastructure.Persistence.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,18 +13,17 @@ namespace Biblioteca.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
             // Add services to the container.
 
 
-            //builder.Services.AddSingleton<BibliotecaDbContext>();
-
             var connectionString = builder.Configuration.GetConnectionString("BibliotecaCs");
             builder.Services.AddDbContext<BibliotecaDbContext>(options => options.UseSqlServer(connectionString));
-            //builder.Services.AddScoped<IEmprestimoService, EmprestimoService>();
 
-            //builder.Services.AddScoped<ILivroService, LivroService>();
+            builder.Services.AddScoped<ILivroRepository,LivroRepository>();
+            builder.Services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
+            builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
-            //builder.Services.AddScoped<IUsuarioService, UsuarioService>();
             builder.Services.AddControllers();
 
             builder.Services.AddMediatR(opt => opt.RegisterServicesFromAssemblyContaining(typeof(CreateLivroCommand)));

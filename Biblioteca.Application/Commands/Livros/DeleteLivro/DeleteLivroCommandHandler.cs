@@ -1,30 +1,26 @@
-﻿using Biblioteca.Infrastructure.Persistence;
+﻿using Biblioteca.Core.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Biblioteca.Application.Commands.Livros.DeleteLivro
 {
     public class DeleteLivroCommandHandler : IRequestHandler<DeleteLivroCommand, Unit>
     {
-
-        private readonly BibliotecaDbContext _dbContext;
-
-        public DeleteLivroCommandHandler(BibliotecaDbContext dbContext)
+        private readonly ILivroRepository _livroRepository;
+        public DeleteLivroCommandHandler(ILivroRepository livroRepository)
         {
-            _dbContext = dbContext;
+            _livroRepository = livroRepository;
         }
 
 
         public async Task<Unit> Handle(DeleteLivroCommand request, CancellationToken cancellationToken)
         {
-            var livro = _dbContext.Livros.SingleOrDefault(l => l.Id == request.Id);
 
+            var livro = await _livroRepository.GetByIdLivroAsync(request.Id);
+
+            // Marca o livro como cancelado (exclusão lógica)
             livro.Cancel();
-            await _dbContext.SaveChangesAsync();
+
+            await _livroRepository.UpdateLivroAsync(livro);
 
             return Unit.Value;
         }

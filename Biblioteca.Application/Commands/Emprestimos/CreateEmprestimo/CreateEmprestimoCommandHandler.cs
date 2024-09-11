@@ -1,23 +1,20 @@
-﻿using Biblioteca.Application.Commands.Emprestimos.CreateEmprestimo;
-using Biblioteca.Core.Entities;
-using Biblioteca.Infrastructure.Persistence;
+﻿using Biblioteca.Core.Entities;
+using Biblioteca.Core.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Biblioteca.Application.Commands.Emprestimos.CreateEmprestimo
 {
     public class CreateEmprestimoCommandHandler : IRequestHandler<CreateEmprestimoCommand, int>
     {
-        private readonly BibliotecaDbContext _dbContext;
 
-        public CreateEmprestimoCommandHandler(BibliotecaDbContext dbContext)
+        private readonly IEmprestimoRepository _emprestimoRepository;
+
+        public CreateEmprestimoCommandHandler(IEmprestimoRepository emprestimoRepository)
         {
-            _dbContext = dbContext;
+            _emprestimoRepository = emprestimoRepository;
         }
+
         public async Task<int> Handle(CreateEmprestimoCommand request, CancellationToken cancellationToken)
         {
             var novoEmprestimo = new Emprestimo(
@@ -27,8 +24,8 @@ namespace Biblioteca.Application.Commands.Emprestimos.CreateEmprestimo
                 request.DataDevolucao
             );
 
-            await _dbContext.Emprestimos.AddAsync(novoEmprestimo);
-            await _dbContext.SaveChangesAsync();
+            /// Adiciona o novo empréstimo usando o repositório
+            await _emprestimoRepository.AddEmprestimoAsync(novoEmprestimo);
 
             return novoEmprestimo.Id;
         }

@@ -1,36 +1,33 @@
-﻿using Biblioteca.Infrastructure.Persistence;
-//using DevFreela.Application.Commands.UpdateProject;
-using Biblioteca.Application.Commands.Usuarios.UpdateUsuario;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Biblioteca.Core.Interfaces;
 
 namespace Biblioteca.Application.Commands.Usuarios.UpdateUsuario
 {
     public class UpdateUsuarioCommandHandler : IRequestHandler<UpdateUsuarioCommand, Unit>
     {
-        private readonly BibliotecaDbContext _dbContext;
 
-        public UpdateUsuarioCommandHandler(BibliotecaDbContext dbContext)
+        private readonly IUsuarioRepository _usuarioRepository;
+
+        public UpdateUsuarioCommandHandler(IUsuarioRepository usuarioRepository)
         {
-            _dbContext = dbContext;
+            _usuarioRepository = usuarioRepository;
         }
 
         public async Task<Unit> Handle(UpdateUsuarioCommand request, CancellationToken cancellationToken)
         {
-            var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Id == request.Id);
+            
+            var usuario = await _usuarioRepository.GetByIdUsuarioAsync(request.Id);
 
             if (usuario == null)
             {
                 throw new Exception("Usuário não encontrado.");
             }
 
+
             // Atualizar as propriedades do usuário
+
             usuario.Update(request.Nome, request.Email);
-            await _dbContext.SaveChangesAsync();
+            await _usuarioRepository.UpdateUsuarioAsync(usuario);
 
             return Unit.Value;
         }

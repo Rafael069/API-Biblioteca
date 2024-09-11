@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Persistence\Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.33" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.33">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +16,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Biblioteca.Core\Biblioteca.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CloudServices\" />
   </ItemGroup>
 
 </Project>

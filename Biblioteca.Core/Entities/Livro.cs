@@ -1,6 +1,5 @@
 ﻿using Biblioteca.Core.Enum;
 
-
 namespace Biblioteca.Core.Entities
 {
     public class Livro : BaseEntity

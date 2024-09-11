@@ -1,10 +1,8 @@
-﻿
-namespace Biblioteca.Core.Enum
+﻿namespace Biblioteca.Core.Enum
 {
     public enum LivroStatusEnum
     {
         Removido = 0,
-        Ativo = 1
-        
+        Ativo = 1       
     }
 }
